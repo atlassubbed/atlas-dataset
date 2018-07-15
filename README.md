@@ -22,7 +22,7 @@ A minimal wrapper, allowing for *basic* statistical inspection of an array of nu
 
 For these examples, we'll be using an array of 1,000,000 random floats between zero and one. When you instantiate a new `Dataset`, the array is shallow copied to avoid manipulating the original:
 
-```
+```javascript
 const Dataset = require("atlas-dataset");
 const arr = [];
 for (let i = 1e6; i--;){
@@ -33,7 +33,7 @@ const set = new Dataset(arr)
 
 #### calculate values
 
-```
+```javascript
 ...
 console.log(`size: ${set.size()} sum: ${set.sum()}`)
 // size: 1000000 sum: 500625.8073510996
@@ -43,7 +43,7 @@ console.log(`value: ${set.mean()} +/- ${set.stddev()}`)
 
 #### updating the data
 
-```
+```javascript
 ...
 set.add(Math.random());
 console.log(`size: ${set.size()} sum: ${set.sum()}`)
