@@ -1,23 +1,27 @@
-const { isArr } = require("./util")
+const { isArr, SUM, RMS2 } = require("./util")
+const stddev = require("atlas-stddev");
+const sum = require("atlas-sum");
+const rms2 = require("atlas-mean-square");
 
 module.exports = class Dataset {
   constructor(data){
-    if (!isArr(data)) 
+    if (!isArr(data))
       throw new Error("requires array of data points");
     let copy = data.slice(), n = copy.length, cache = {};
-    const x = (pow, s=0) => {
-      if (pow in cache) return cache[pow];
-      if (pow === 1) for (let i=n; i--;) s+= copy[i];
-      else for (let i=n, d; i--;) s+= (d=copy[i])*d;
-      return (cache[pow] = s)
-    }
     this.size = () => n
     this.add = p => {cache = {}; (n = copy.push(p))}
-    this.sum = () => x(1)
-    this.mean = () => x(1)/n;
-    this.stddev = () => {
-      const m = x(1)/n
-      return Math.sqrt(x(2)/n - m*m)
+    this.calc = c => {
+      if (c in cache) return cache[c];
+      return (cache[c] = c ? rms2(copy) : sum(copy))
     }
+  }
+  sum(){
+    return this.calc(SUM)
+  }
+  mean(){
+    return this.sum()/this.size();
+  }
+  stddev(){
+    return stddev(this.mean(), this.calc(RMS2))
   }
 }
