@@ -7,7 +7,17 @@
     "test": "mocha --colors --recursive './test/**/*.test.js'"
   },
   "main": "./src/Dataset.js",
-  "keywords": [],
+  "keywords": [
+    "atlassubbed",
+    "utils",
+    "utility",
+    "math",
+    "stats",
+    "statistics",
+    "data",
+    "mean",
+    "variance"
+  ],
   "author": "atlassubbed <atlassubbed@gmail.com>",
   "license": "Apache-2.0",
   "devDependencies": {
