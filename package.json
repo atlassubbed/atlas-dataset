@@ -40,8 +40,10 @@
     "url": "https://github.com/atlassubbed/atlas-dataset.git"
   },
   "dependencies": {
+    "atlas-mad": "^1.0.0",
     "atlas-mean": "^1.0.1",
     "atlas-mean-square": "^1.0.0",
+    "atlas-median": "^1.0.1",
     "atlas-stddev": "^1.0.0",
     "atlas-sum": "^1.0.1"
   }
