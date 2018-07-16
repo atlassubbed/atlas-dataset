@@ -14,7 +14,7 @@ npm install --save atlas-dataset
 
 ## why
 
-A minimal wrapper, allowing for *basic* statistical inspection of an array of numbers. All linear-time calculations are cached on-demand and reused.
+A minimal wrapper, allowing for *basic* statistical inspection of an array of numbers. All linear and polylogarithmic calculations are cached on-demand and reused.
 
 ## examples
 
@@ -36,9 +36,11 @@ const set = new Dataset(arr)
 ```javascript
 ...
 console.log(`size: ${set.size()} sum: ${set.sum()}`)
-// size: 1000000 sum: 500625.8073510996
 console.log(`value: ${set.mean()} +/- ${set.stddev()}`)
-// value: 0.5006258073510996 +/- 0.2889362460034084
+console.log(`median: ${set.median()} +/- ${set.mad()}`)
+// size: 1000000 sum: 500128.4297823687
+// mean: 0.5001284297823687 +/- 0.2884814684388095
+// median: 0.4996962409854201 +/- 0.24966274565483493
 ```
 
 #### updating the data
@@ -47,9 +49,11 @@ console.log(`value: ${set.mean()} +/- ${set.stddev()}`)
 ...
 set.add(Math.random());
 console.log(`size: ${set.size()} sum: ${set.sum()}`)
-// size: 1000001 sum: 500626.3141132523
 console.log(`value: ${set.mean()} +/- ${set.stddev()}`)
-// value: 0.5006258134874387 +/- 0.28893610160055483
+console.log(`median: ${set.median()} +/- ${set.mad()}`)
+// size: 1000001 sum: 500128.76868722256
+// mean: 0.500128268558954 +/- 0.2884813692496768
+// median: 0.4996961275123013 +/- 0.2496624248162307
 ```
 
 ## caveats
