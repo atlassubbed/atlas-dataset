@@ -1,6 +1,6 @@
 {
   "name": "atlas-dataset",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Calculate mean, standard deviation, sum for a set of data points.",
   "scripts": {
     "test-server": "mocha --colors --watch --recursive './test/**/*.test.js'",
