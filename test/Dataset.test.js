@@ -190,4 +190,17 @@ describe("Dataset", function(){
       expect(d.mad()).to.equal(mad([point, ...set]))
     })
   })
+  describe("snapshot", function(){
+    it("should return a snapshot of all the stats", function(){
+      const d = new Dataset(set);
+      expect(d.snapshot()).to.deep.equal({
+        size: set.length,
+        total: sum(set),
+        mean: mean(set),
+        median: median(set),
+        stddev: stddev(set),
+        mad: mad(set)
+      })
+    })
+  })
 })

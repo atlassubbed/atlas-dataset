@@ -26,19 +26,19 @@ module.exports = class Dataset {
     }
   }
   // XXX don't use magic numbers
-  sum(){
-    return this.calc(1)
-  }
-  median(){
-    return this.calc(3)
-  }
-  mad(){
-    return this.calc(4)
-  }
-  mean(){
-    return this.sum()/this.size();
-  }
-  stddev(){
-    return math[0](this.mean(), this.calc(2))
+  sum(){return this.calc(1)}
+  median(){return this.calc(3)}
+  mad(){return this.calc(4)}
+  mean(){return this.sum()/this.size();}
+  stddev(){return math[0](this.mean(), this.calc(2))}
+  snapshot(){
+    return {
+      size: this.size(),
+      total: this.sum(),
+      mean: this.mean(),
+      median: this.median(),
+      mad: this.mad(),
+      stddev: this.stddev(),
+    }
   }
 }

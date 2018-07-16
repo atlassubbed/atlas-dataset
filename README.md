@@ -59,3 +59,13 @@ console.log(`median: ${set.median()} +/- ${set.mad()}`)
 ## caveats
 
 In the examples, `arr` is not normally distributed, nor are we caring about the amount of significant figures in the result.
+
+## todo
+
+For efficiently updating calculations, derive a recurrence relation for each quantity, `V`:
+
+```
+V(X_n+1) = f(V(X_n), x_n+1)
+```
+
+For example `Mu_n+1 = (Mu_n*n + x_n+1)/(n+1)` and updating the `size` and `sum` is trivial. Recomputing `stddev` is easy using the forumla: `s^2 = <x^2> - <x>^2`. Just square `s_n`, compute `s_n+1^2` then take the square root. Updating the mean square is the exact same thing as updating the mean, we just replace `x_n+1` with `x_n+1^2` in the numerator.
